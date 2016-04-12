@@ -4,12 +4,12 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories', 'tabSlideBox'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories', 'tabSlideBox', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+    // for form inputs)starter.services
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -67,12 +67,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories',
         controller: 'PlaylistCtrl'
       }
     }
-    .state('app.playlists', {
-        url : '/playlists',
-        templateUrl : 'templates/playlists.html',
-        controller : 'Category'
-      });
-  });
+  })
+  .state('app.home', {
+    url: '/home',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/home.html',
+        controller: 'Service'
+      }
+    }
+  })
+  ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 });
