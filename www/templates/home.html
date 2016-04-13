@@ -9,7 +9,7 @@
 </label>
   	</div>
   	 <ion-list>
-        <ion-item ng-repeat="service in services" href="#/app/playlists" >
+        <ion-item ng-repeat="service in services"  ng-click="changeService({{service.id}})" >
                       <div style="height: 100px;">
                       <img src={{service.icon}}>
                       </div>

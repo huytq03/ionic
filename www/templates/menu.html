@@ -13,22 +13,53 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
+      <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item menu-close ng-click="#/app/home">
+          <img src="img/leftmenu/logo.png">
+            <p style="color: #F37320; text-align: center;">The world’s largest kitchen</p>
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item  href="#">
+          <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/location.png"> DELEVERY LOCATION
+          </p>
+        <input  style="    outline: solid 1px lightgray;    width: 90%;  padding: 5px;  margin: auto auto 10px auto;" type="text" placeholder=" Your Location">
+   
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item href="#">
+           <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/services.png"> SELECT YOUR SERVICE
+          </p>
+               <div ng-controller="Service" style=" display: flex !important;  margin-left: 15px;margin-bottom: 10px;">
+        <ion-item ng-repeat="service in services" href="#/app/playlists">
+                    
+                      <img src={{service.icon_menu}}>
+                  
+                      </ion-item>
+
+                    </div>
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+        <ion-item menu-close href="#/app/home">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/home.png"> HOME
+          </p>
+        </ion-item>
+          <ion-item menu-close href="#/app/order">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/order.png"> PAST ORDERS
+          </p>
+        </ion-item>
+          <ion-item menu-close href="#/app/settings">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/setting.png"> SETTINGS
+          </p>
+        </ion-item>
+          <ion-item menu-close href="#/app/wallet">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/wallet.png"> MY WALLET
+          </p>
+        </ion-item>
+          <ion-item menu-close href="#/app/chat">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/chat.png"> SUPPORT CHAT
+          </p>
+        </ion-item>
+          <ion-item menu-close href="#/app/cart">
+         <p  style="padding: 10px 10px 0px 30px; display: inline-flex;"> <img style="margin-right: 20px;" src="img/leftmenu/cart.png"> SHOPPING CART
+          </p>
         </ion-item>
       </ion-list>
     </ion-content>
