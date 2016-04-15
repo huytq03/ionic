@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories', 'tabSlideBox', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories', 'tabSlideBox', 'starter.services', 'starter.restaurant'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -77,16 +77,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories',
       }
     }
   })
-  .state('app.dishs', {
-    url: '/dishs',
+  .state('app.productFavor', {
+    url: '/productFavor',
     views: {
       'menuContent': {
-        templateUrl: 'templates/dishs.html',
-        controller: 'Dishs'
+        templateUrl: 'templates/productsfavor.html',
+        controller: 'Category'
+      }
+    }
+  })
+  .state('app.productDetail', {
+    url: '/productDetail',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/productDetail.html',
+        controller: 'Restaurant'
       }
     }
   })
   ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
-});
+})
+.factory('ProductFactory', function(){
+    return {
+        name: "test",
+        taste:[],
+        data: [],
+        serviceName: "test"
+    }               
+})
+.factory('ProductDetailFactory', function(){
+  return {
+                    "id": 12,
+                    "title": "Burrata Prosciutto",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7759941,
+                        "longitude": -122.413994
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://media-cdn.tripadvisor.com/media/photo-s/07/98/4b/52/pizza-4p-s.jpg",
+                    "rating": 4,
+                    "price": 13.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                };              
+})
+;

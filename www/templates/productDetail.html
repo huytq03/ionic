@@ -1,0 +1,60 @@
+<ion-view>
+ <ion-nav-title>
+{{product.restaurant.name}}
+   </ion-nav-title>
+   <ion-nav-buttons side="right" style="display: block;">
+   <img src="img/menu.png"> <p style="color: #F28037;">View menu</p>
+   </ion-nav-buttons>
+  <ion-content>
+    <div>
+    	<img src="{{product.image}}">
+    	<div style="background-color: #DFDAD4;margin: 0px;">
+    	<table>
+    		<tr>
+    			<td><p style="    margin-left: 20px;    margin-top: 20px;    font-size: 20px;    font-family: -webkit-pictograph;">{{product.title}}</p>
+    		<p style="
+    margin-left: 20px;
+    font-size: 12px;
+">By {{product.restaurant.name}}</p></td>
+    			<td><p style="font-size: 20px"><b>${{product.price}}</b></p></td>
+    		</tr>
+    		<tr >
+    		<td colspan="2">
+    			<p style="margin-left: 20px">{{product.description}}
+
+    		</p>
+    		</td>
+    		</tr>
+    	</table>
+    		
+    		
+    		
+
+    	</div>
+    	<div >
+    	<table>
+    	<tr>
+    	<td >
+    		<p style="margin-left: 20px;">Calories: {{product.calory}}</p>
+    		<p style="margin-left: 20px;">Delivery Time: {{product.eta}}</p>
+    		<p style="margin-left: 20px;">Distance: {{product.distance}}</p>
+		</td>
+		<td>
+			<img style="position: absolute;margin-left: 160px;margin-top: 15px;" src="img/map_order.png">
+		</td>
+		</tr>
+		<tr>
+			<td >
+				
+    	<div  style=" bottom: inherit; background-color: orange" class="bar bar-footer bar-balanced">
+		  <p
+		   class="title">ADD TO CARD 
+		  <img style="display: inline-flex;" src="img/cart_order.png"></p>
+		</div>
+			</td>
+		</tr>
+		</table>
+    	</div>
+    </div>
+  </ion-content>
+</ion-view>

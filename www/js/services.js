@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
-.controller("Service",      function( $scope, $ionicModal, $timeout, $location, $state){
-        
+.controller("Service",      function( $scope, $ionicModal, $timeout, $location, $state, ProductFactory){
+        $scope.pmode = ProductFactory;
         $scope.services = [
           {id: 1, "name" : "Delivery", "icon":"img/delivery.png","url":"app.playlists", "icon_menu":"img/leftmenu/delivery.png"},
          {id: 2,"name" : "Pick up", "icon":"img/pickup.png","url":"app.playlists", "icon_menu":"img/leftmenu/pickup.png"},
@@ -13,8 +13,11 @@ angular.module('starter.services', [])
         			return obj;
         		}
         	});
-        	if(obj != undefined)
-        		 $state.transitionTo(obj.url);
+        	if(obj != undefined) {
+        		this.pmode.serviceName = obj.name;
+        		$state.transitionTo(obj.url);
+        	}
+
         }
 
         

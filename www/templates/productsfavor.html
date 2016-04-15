@@ -1,0 +1,53 @@
+
+<ion-view ng-controller="Category">
+ <ion-nav-title>
+   {{pmodel.name}}
+    </ion-nav-title>
+  <ion-content>
+    <div>
+        <tab-slide-box  >
+            <div class="tsb-icons">
+                <div class="tsb-ic-wrp">
+                    <ion-scroll direction="x" class="tsb-hscroll"  style="overflow-x: hidden;overflow-y: hidden;">
+                        <a href="javascript:;" class="{{taste.isActive}}" ng-repeat="taste in pmodel.tates" on-finish-render="test()">{{taste.name}}</a>
+                    </ion-scroll>
+                </div>
+            </div>
+               <ion-slide-box show-pager="false" on-slide-changed="favoreHasChanged($index)">
+                <ion-slide ng-repeat="taste in pmodel.tates">
+                   <ion-list>
+                      <ion-item ng-repeat="item in pmodel.data" ng-click="onProductDetail({{item.id}})" >
+                      <div style="height: 150px;background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%), url({{item.image}}) no-repeat;">
+
+                      <div style="display: flex;position: absolute;margin-top: 85px;margin-left: 20px;">
+                       <p style="width: 220px;color: white;font-size: 25px;"> <b> {{item.title}} </b></p>
+                         <p style="color: white;margin-left: 80px;font-size: 20px;"><b>${{item.price}}</b></p>
+                       </div>
+                       <div style="display: flex;position: absolute;margin-top: 110px;margin-left: 20px;">
+                         
+                       <P style="color: white; margin-right: 15px; ">By {{item.restaurant.name}}</P>
+
+                       <div ng-repeat="n in [1, 2, 3, 4, 5]">
+                      <img   ng-if="item.rating >= n" src="img/star_full.png">
+                      <img   ng-if="item.rating < n" src="img/star_empty.png">
+                      </div>
+                             <p style="color: white;margin-left: 110px; ">${{item.delivery_fee}} delivery</p>
+                       </div>
+                       <div style="display: flex;position: absolute;margin-top: 125px;margin-left: 20px;">
+                       <p style="color: white;">Distance : {{item.distance}}</p> <p style="color: white; margin-left: 40px;">  ETA: {{item.eta}}</p>
+                     
+                  
+                       <p style="   color: orange;    font-family: fantasy;    margin-right: 5px;    margin-left: 120px;">ORDER</p>
+                       </div>
+                      </div>
+                      </ion-item>
+
+                    </ion-list>
+                </ion-slide>
+             
+            </ion-slide-box>
+        </tab-slide-box>
+    </div>
+  </ion-content>
+
+</ion-view>

@@ -1,5 +1,5 @@
 angular.module('starter.categories', [])
-    .controller("Category", function($scope, $ionicModal, $timeout, $state) {
+    .controller("Category", function($scope, $ionicModal, $timeout, $state, ProductFactory, ProductDetailFactory) {
 
         $scope.tabs = [{
             "id": 1,
@@ -8,8 +8,9 @@ angular.module('starter.categories', [])
             "id": 2,
             "text": "DISH"
         }];
+        $scope.detailProduct = ProductDetailFactory;
         $scope.listProducts = [];
-
+        $scope.pmodel = ProductFactory;
         $scope.onSlideMove = function(data) {
             //alert("You have selected " + data.id + " tab");
             if (data.index == 0) {
@@ -288,4 +289,198 @@ angular.module('starter.categories', [])
             }
             $scope.$apply();
         };
+        $scope.onProductsSelected = function(productId) {
+            var item = this.listProducts.find(function(item) {
+                if (item.id == productId)
+                    return item;
+            });
+            this.pmodel.name = item.name;
+            this.pmodel.tates = item.tates;
+
+
+
+            $state.transitionTo("app.productFavor");
+        };
+        $scope.favoreHasChanged = function(index) {
+            var selectedId = 0;
+            this.pmodel.tates.forEach(function(taste, i) {
+                if (i == index) {
+                    taste.isActive = "active";
+                    selectedId = taste.id;
+                } else {
+
+                    taste.isActive = "";
+                }
+
+            });
+            if (selectedId == 12 && this.pmodel.data.length == 0) {
+                this.pmodel.data = [{
+                    "id": 12,
+                    "title": "Burrata Prosciutto",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7759941,
+                        "longitude": -122.413994
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://media-cdn.tripadvisor.com/media/photo-s/07/98/4b/52/pizza-4p-s.jpg",
+                    "rating": 4,
+                    "price": 13.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "Anchovy Tomato Burrata",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Al Fresco",
+                        "latitude": 37.7790036,
+                        "longitude": -122.409758
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://images.media-allrecipes.com/userphotos/720x405/648701.jpg",
+                    "rating": 3,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "Burrata Prosciutto Tomato",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Domino Pizza",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7808071,
+                        "longitude": -122.4187166
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://www.lacuochinasopraffina.com/wp-content/uploads/2012/02/pizza-napoletana.jpg",
+                    "rating": 2,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "Margherita",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7508071,
+                        "longitude": -122.4177166
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "https://s-media-cache-ak0.pinimg.com/736x/8d/73/1e/8d731ea49621611bb5881501099f4df4.jpg",
+                    "rating": 3,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "Prosciutto Margherita",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7518071,
+                        "longitude": -122.4177166
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://www.winterwheat1.com/wp-content/uploads/2011/02/dsc_05571.jpg",
+                    "rating": 4.5,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "3 Cheese Pizza",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Cheese 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 37.7518071,
+                        "longitude": -122.4277166
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://s3.amazonaws.com/studio-me/system/photos/photos/000/801/374/large/16464279_l.jpg",
+                    "rating": 4.5,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 135000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "4 Cheese Pizza",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 100,
+                        "longitude": 100
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://cookingthebooks.typepad.com/.a/6a00e54f08c4bd8834010535e62daa970c-pi",
+                    "rating": 3.5,
+                    "price": 10.5,
+                    "distance": 2.1,
+                    "eta": 1800000,
+                    "delivery_fee": 1.5
+                }, {
+                    "id": 12,
+                    "title": "5 Cheese Pizza",
+                    "restaurant": {
+                        "id": 12,
+                        "name": "Pizza 4P",
+                        "address": "740 S Olive St, Los Angeles, CA",
+                        "phone": 123456789,
+                        "open": false,
+                        "latitude": 100,
+                        "longitude": 100
+                    },
+                    "description": "Every morning, we use freshly drawn milk from the cows grown in this rich natural environment and carefully make each cheese by hand.",
+                    "calory": 150,
+                    "image": "http://cookingthebooks.typepad.com/.a/6a00e54f08c4bd8834010535e62daa970c-pi",
+                    "rating": 4.5,
+                    "price": 8.5,
+                    "distance": 4,
+                    "eta": 1200000,
+                    "delivery_fee": 1.5
+                }];
+            }
+
+            $scope.$apply();
+        };
+        $scope.onProductDetail = function (productId) {
+            this.detailProduct = this.pmodel.data.find(function(item) {
+                if (item.id == productId)
+                    return item;
+            });
+           $state.transitionTo("app.productDetail");
+        }
     });
