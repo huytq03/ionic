@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories',
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'Category'
         }
       }
     })
@@ -74,6 +74,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.categories',
       'menuContent': {
         templateUrl: 'templates/home.html',
         controller: 'Service'
+      }
+    }
+  })
+  .state('app.dishs', {
+    url: '/dishs',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/dishs.html',
+        controller: 'Dishs'
       }
     }
   })
